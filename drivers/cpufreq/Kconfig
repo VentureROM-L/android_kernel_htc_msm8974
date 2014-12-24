@@ -108,6 +108,18 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 	  you to get a full dynamic cpu frequency capable system by simply
 	  loading your cpufreq low-level hardware driver, using the
 	  'interactive' governor for latency-sensitive workloads.
+	  
+config CPU_FREQ_DEFAULT_GOV_RAGINGVENTURES
+	bool "ragingventures"
+	select CPU_FREQ_GOV_RAGINGVENTURES
+	help
+	  Use the CPUFreq governor 'RagingVentures' as default.
+	  
+config CPU_FREQ_DEFAULT_GOV_RAGINGEAGLES
+	bool "ragingeagles"
+	select CPU_FREQ_GOV_RAGINGEAGLES
+	help
+	  Use the CPUFreq governor 'RagingEagles' as default.
 
 endchoice
 
@@ -209,6 +221,36 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 	  To compile this driver as a module, choose M here: the
 	  module will be called cpufreq_conservative.
+
+	  For details, take a look at linux/Documentation/cpu-freq.
+
+	  If in doubt, say N.
+	  
+config CPU_FREQ_GOV_RAGINGVENTURES
+	tristate "'ragingventures' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'RAGINGVENTURES' - This driver adds a cpufreq policy governor 
+	  much along the lines of ondemand but tries to keep to low 
+	  frequencies without hurting performance for workloads that need it. 
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called cpufreq_ragingventures.
+
+	  For details, take a look at linux/Documentation/cpu-freq.
+
+	  If in doubt, say N.
+	  
+config CPU_FREQ_GOV_RAGINGEAGLES
+	tristate "'ragingeagles' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'RAGINGEAGLES' - This driver adds a cpufreq policy governor 
+	  much along the lines of ondemand but tries to keep to low 
+	  frequencies without hurting performance for workloads that need it. 
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called cpufreq_ragingeagles.
 
 	  For details, take a look at linux/Documentation/cpu-freq.
 
